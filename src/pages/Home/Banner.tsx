@@ -13,7 +13,21 @@ import {
 import SearchIcon from "@mui/icons-material/Search";
 import banner from "../../assets/images/banner.png";
 
-const Banner = () => {
+interface BannerProps {
+  searchTerm: string;
+  setSearchTerm: (value: string) => void;
+  category: string;
+  setCategory: (value: string) => void;
+  handleSearch: () => void;
+}
+
+const Banner: React.FC<BannerProps> = ({
+  searchTerm,
+  setSearchTerm,
+  category,
+  setCategory,
+  handleSearch,
+}) => {
   return (
     <Box
       sx={{
@@ -25,7 +39,8 @@ const Banner = () => {
         display: "flex",
         flexDirection: "column",
         alignItems: "end",
-        mt: "-130px",
+        mt: "-135px",
+        px: { lg: 5, md: 3, sm: 2, xs: 1 },
       }}
     >
       {/* Banner Content */}
@@ -38,16 +53,10 @@ const Banner = () => {
           justifyContent: "space-between",
           alignItems: "end",
           mb: {
-            lg: 6,
-            md: 5,
-            sm: 4,
+            lg: 8,
+            md: 7,
+            sm: 5,
             xs: 3,
-          },
-          p: {
-            lg: 6,
-            md: 4,
-            sm: 3,
-            xs: 2,
           },
         }}
       >
@@ -92,6 +101,7 @@ const Banner = () => {
                 xs: 1,
               },
               width: "100%",
+              height: "100px",
             }}
           >
             <Box
@@ -106,6 +116,8 @@ const Banner = () => {
               <SearchIcon sx={{ color: "grey.500" }} />
               <InputBase
                 placeholder="Search for an event"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
                 sx={{ ml: 1, flex: 1 }}
               />
             </Box>
@@ -118,7 +130,12 @@ const Banner = () => {
             />
 
             <FormControl variant="standard">
-              <Select defaultValue="" displayEmpty>
+              <Select
+                defaultValue=""
+                displayEmpty
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+              >
                 <MenuItem value="">Categories</MenuItem>
                 <MenuItem value={1}>All</MenuItem>
                 <MenuItem value={2}>Comedy</MenuItem>
@@ -131,7 +148,7 @@ const Banner = () => {
               </Select>
             </FormControl>
 
-            <Button variant="contained" color="primary">
+            <Button variant="contained" color="primary" onClick={handleSearch}>
               Search
             </Button>
           </Stack>

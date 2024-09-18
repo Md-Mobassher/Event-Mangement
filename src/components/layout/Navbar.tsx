@@ -21,6 +21,7 @@ export type TNavItemsData = {
   url: string;
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const navItemsData = [
   {
     title: "Discover",
@@ -99,18 +100,18 @@ const Navbar = () => {
   );
 
   return (
-    <Box>
-      <Container
-        sx={{
-          px: 6,
-          py: 3,
-        }}
-      >
+    <Box
+      sx={{
+        px: { lg: 5, md: 3, sm: 2, xs: 1 },
+      }}
+    >
+      <Container>
         <AppBar
           position="sticky"
           sx={{
             backgroundColor: "rgba(255, 255, 255, 0.8)",
             borderRadius: 3,
+            mt: { lg: 4, md: 3, sm: 2, xs: 1 },
           }}
           elevation={0}
         >
@@ -118,10 +119,10 @@ const Navbar = () => {
             direction="row"
             justifyContent="space-between"
             alignItems="center"
-            sx={{ p: 2 }}
+            sx={{ px: 3, py: 1 }}
           >
             <Link to={"/"}>
-              <img src={logo} alt="logo" style={{ height: 40 }} />
+              <img src={logo} alt="logo" style={{ height: 60 }} />
             </Link>
 
             {isMobile && (
