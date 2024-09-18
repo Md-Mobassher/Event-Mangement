@@ -1,8 +1,11 @@
+import { Box } from "@mui/material";
+import MainLayout from "./components/layout/MainLayout";
+
 function App() {
   return (
-    <>
-      <h1>event management</h1>
-    </>
+    <Box>
+      <MainLayout />
+    </Box>
   );
 }
 
