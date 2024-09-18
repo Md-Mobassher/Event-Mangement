@@ -3,32 +3,52 @@ import { useEffect, useState } from "react";
 import { fetchAllEvents } from "../../services/api";
 import EventCard from "../../components/ui/EventCard";
 import { Event } from "../../type";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import Loading from "../../components/ui/Loading";
 
 const AllEventsPage = () => {
-  const [events, setEvents] = useState([]);
+  const [events, setEvents] = useState<Event[]>([]);
   const [loading, setLoading] = useState(false);
-  const [pageNumber] = useState(1);
-  const [limit] = useState(6);
+  const [limit] = useState(9);
+  const [totalPages, setTotalPages] = useState(1);
 
   const location = useLocation();
+  const navigate = useNavigate();
+
   const query = new URLSearchParams(location.search);
   const page = parseInt(query.get("page") || "1", 10);
 
-  // Fetch all events initially
+  // Fetch events whenever the page changes
   useEffect(() => {
     setLoading(true);
-    fetchAllEvents(pageNumber, limit)
+    fetchAllEvents(page, limit)
       .then((response) => {
         console.log(response);
         setEvents(response?.data?.data?.allEvents);
+        setTotalPages(response?.data?.data?.noOfPages || 1);
       })
       .catch((error) => {
         console.error("Error fetching events:", error);
       })
       .finally(() => setLoading(false));
-  }, []);
+  }, [page, limit]);
 
+  // Handle pagination change
+  const handlePageChange = (
+    _event: React.ChangeEvent<unknown>,
+    value: number
+  ) => {
+    navigate(`?page=${value}`); // Update the URL with the new page number
+  };
+
+  if (loading) return <Loading />;
+
+  if (!events)
+    return (
+      <Typography variant="h6" fontWeight={500} textAlign="center" color="red">
+        Events Not Found
+      </Typography>
+    );
   return (
     <Box
       sx={{
@@ -40,7 +60,7 @@ const AllEventsPage = () => {
         {/* Section Header */}
         <Stack direction="row" justifyContent="center" alignItems="center">
           <Typography variant="h4" fontWeight={500} color="primary.main">
-            All Trending Events
+            All Events
           </Typography>
         </Stack>
 
@@ -59,11 +79,8 @@ const AllEventsPage = () => {
             mt: 5,
           }}
         >
-          {loading ? (
-            <Typography>Loading events...</Typography>
-          ) : events && events.length === 0 ? (
-            <Typography>No events found</Typography>
-          ) : (
+          {events &&
+            events.length > 0 &&
             (events as Event[])?.map((event) => (
               <Box
                 key={event.id}
@@ -76,6 +93,7 @@ const AllEventsPage = () => {
                 }}
               >
                 <EventCard
+                  id={event.id}
                   imageUrl={event.imageUrl}
                   title={event.title}
                   date={event.date}
@@ -83,20 +101,19 @@ const AllEventsPage = () => {
                   description={event.description}
                 />
               </Box>
-            ))
-          )}
+            ))}
         </Box>
 
-        {/* pagination */}
-        <Stack
-          direction="row"
-          justifyContent="center"
-          mt={5}
-          border="1px solid lightgray"
-          p={2}
-          borderRadius={2}
-        >
-          <Pagination page={page} count={5} size="large" />
+        {/* Pagination */}
+        <Stack direction="row" justifyContent="end" mt={5}>
+          <Box border="1px solid lightgray" px={4} py={1} borderRadius={2}>
+            <Pagination
+              page={page} // Current page number from the URL
+              count={totalPages} // Total number of pages
+              size="large"
+              onChange={handlePageChange} // Handle page change
+            />
+          </Box>
         </Stack>
       </Container>
     </Box>

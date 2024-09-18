@@ -3,6 +3,7 @@ import NorthEastIcon from "@mui/icons-material/NorthEast";
 import EventCard from "../../components/ui/EventCard";
 import { Event } from "../../type";
 import { Link } from "react-router-dom";
+import Loading from "../../components/ui/Loading";
 
 interface TrendingEventsProps {
   events: Event[] | undefined;
@@ -10,6 +11,15 @@ interface TrendingEventsProps {
 }
 
 const TrendingEvents: React.FC<TrendingEventsProps> = ({ events, loading }) => {
+  if (loading) return <Loading />;
+
+  if (!events)
+    return (
+      <Typography variant="h6" fontWeight={500}>
+        Events Not Found
+      </Typography>
+    );
+
   return (
     <Box
       sx={{
@@ -33,6 +43,7 @@ const TrendingEvents: React.FC<TrendingEventsProps> = ({ events, loading }) => {
             gap="8px"
             component={Link}
             to={"/events"}
+            sx={{ textDecoration: "none" }}
           >
             <Typography
               color="secondary.main"
@@ -63,11 +74,7 @@ const TrendingEvents: React.FC<TrendingEventsProps> = ({ events, loading }) => {
             mt: 5,
           }}
         >
-          {loading ? (
-            <Typography>Loading events...</Typography>
-          ) : events && events.length === 0 ? (
-            <Typography>No events found</Typography>
-          ) : (
+          {events &&
             events?.slice(0, 6)?.map((event) => (
               <Box
                 key={event.id}
@@ -80,6 +87,7 @@ const TrendingEvents: React.FC<TrendingEventsProps> = ({ events, loading }) => {
                 }}
               >
                 <EventCard
+                  id={event.id}
                   imageUrl={event.imageUrl}
                   title={event.title}
                   date={event.date}
@@ -87,8 +95,7 @@ const TrendingEvents: React.FC<TrendingEventsProps> = ({ events, loading }) => {
                   description={event.description}
                 />
               </Box>
-            ))
-          )}
+            ))}
         </Box>
       </Container>
     </Box>

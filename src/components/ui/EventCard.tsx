@@ -4,8 +4,10 @@ import { Event } from "../../type";
 import NorthEastIcon from "@mui/icons-material/NorthEast";
 import { formatDate } from "../../utils/formatDate";
 import { formatTime } from "../../utils/formatTime";
+import { Link } from "react-router-dom";
 
 const EventCard: React.FC<Partial<Event>> = ({
+  id,
   imageUrl,
   title,
   date,
@@ -29,8 +31,20 @@ const EventCard: React.FC<Partial<Event>> = ({
         <Typography color="black" mt={3}>
           {description?.slice(0, 120)}...
         </Typography>
-        <Box display="flex" alignItems="center" gap="8px" mt={3}>
-          <Typography color="secondary.main" fontWeight={500}>
+        <Box
+          display="flex"
+          alignItems="center"
+          gap="8px"
+          mt={3}
+          component={Link}
+          to={`/events/${id}`}
+          sx={{ textDecoration: "none" }}
+        >
+          <Typography
+            color="secondary.main"
+            fontWeight={500}
+            sx={{ textDecoration: "none" }}
+          >
             View details
           </Typography>
           <NorthEastIcon

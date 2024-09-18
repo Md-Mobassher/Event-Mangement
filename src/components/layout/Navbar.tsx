@@ -29,15 +29,15 @@ export const navItemsData = [
   },
   {
     title: "About Us",
-    url: "/about",
+    url: "/",
   },
   {
     title: "FAQs",
-    url: "/faqs",
+    url: "/",
   },
   {
     title: "Contact Us",
-    url: "/contact",
+    url: "/",
   },
 ];
 
