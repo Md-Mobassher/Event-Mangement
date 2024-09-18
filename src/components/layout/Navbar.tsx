@@ -3,6 +3,7 @@ import {
   AppBar,
   Box,
   Button,
+  Container,
   Drawer,
   IconButton,
   Stack,
@@ -88,74 +89,87 @@ const Navbar = () => {
         >
           Log in
         </Typography>
-        <Button variant="contained" color="primary">
-          Sign up
-        </Button>
+        <Link to={"/signup"}>
+          <Button variant="contained" color="primary">
+            Sign up
+          </Button>
+        </Link>
       </Stack>
     </Box>
   );
 
   return (
-    <Box
-      sx={{
-        px: {
-          lg: 5,
-          md: 4,
-          sm: 2,
-          xs: 1,
-        },
-        py: {
-          lg: 3,
-          md: 2,
-          sm: 1,
-          xs: 1,
-        },
-      }}
-    >
-      <AppBar
-        position="sticky"
+    <Box>
+      <Container
         sx={{
-          backgroundColor: "rgba(255, 255, 255, 0.8)",
-          borderRadius: 3,
-          px: {
-            lg: 2,
-            md: 2,
-            sm: 1,
-            xs: "5px",
-          },
+          px: 6,
+          py: 3,
         }}
-        elevation={0}
       >
-        <Stack
-          direction="row"
-          justifyContent="space-between"
-          alignItems="center"
-          sx={{ p: 2 }}
+        <AppBar
+          position="sticky"
+          sx={{
+            backgroundColor: "rgba(255, 255, 255, 0.8)",
+            borderRadius: 3,
+          }}
+          elevation={0}
         >
-          <Link to={"/"}>
-            <img src={logo} alt="logo" style={{ height: 40 }} />
-          </Link>
+          <Stack
+            direction="row"
+            justifyContent="space-between"
+            alignItems="center"
+            sx={{ p: 2 }}
+          >
+            <Link to={"/"}>
+              <img src={logo} alt="logo" style={{ height: 40 }} />
+            </Link>
 
-          {isMobile && (
-            <IconButton edge="start" color="inherit" onClick={handleDrawerOpen}>
-              <MenuIcon
-                sx={{ color: "primary.main", width: "35px", height: "35px" }}
-              />
-            </IconButton>
-          )}
-          {!isMobile ? (
-            <Stack
-              direction="row"
-              spacing={2}
-              alignItems="center"
-              justifyContent="space-between"
-              gap={1}
-            >
-              {navItemsData.map((item: TNavItemsData, index) => (
+            {isMobile && (
+              <IconButton
+                edge="start"
+                color="inherit"
+                onClick={handleDrawerOpen}
+              >
+                <MenuIcon
+                  sx={{ color: "primary.main", width: "35px", height: "35px" }}
+                />
+              </IconButton>
+            )}
+            {!isMobile ? (
+              <Stack
+                direction="row"
+                spacing={2}
+                alignItems="center"
+                justifyContent="space-between"
+                gap={1}
+              >
+                {navItemsData.map((item: TNavItemsData, index) => (
+                  <Typography
+                    key={index}
+                    component={Link}
+                    to={item.url}
+                    sx={{
+                      fontWeight: 500,
+                      color: "primary.main",
+                      fontSize: "16px",
+                      textDecoration: "none",
+                    }}
+                  >
+                    {item.title}
+                  </Typography>
+                ))}
+              </Stack>
+            ) : null}
+            {isMediumAndUp && (
+              <Stack
+                direction="row"
+                gap={3}
+                alignItems="center"
+                justifyContent="space-between"
+              >
                 <Typography
-                  key={index}
                   component={Link}
-                  to={item.url}
+                  to={"/login"}
                   sx={{
                     fontWeight: 500,
                     color: "primary.main",
@@ -163,40 +177,21 @@ const Navbar = () => {
                     textDecoration: "none",
                   }}
                 >
-                  {item.title}
+                  Log in
                 </Typography>
-              ))}
-            </Stack>
-          ) : null}
-          {isMediumAndUp && (
-            <Stack
-              direction="row"
-              gap={3}
-              alignItems="center"
-              justifyContent="space-between"
-            >
-              <Typography
-                component={Link}
-                to={"/login"}
-                sx={{
-                  fontWeight: 500,
-                  color: "primary.main",
-                  fontSize: "16px",
-                  textDecoration: "none",
-                }}
-              >
-                Log in
-              </Typography>
-              <Button variant="contained" color="primary">
-                Sign up
-              </Button>
-            </Stack>
-          )}
-        </Stack>
-      </AppBar>
-      <Drawer anchor="right" open={drawerOpen} onClose={handleDrawerClose}>
-        {drawerContent}
-      </Drawer>
+                <Link to={"/signup"}>
+                  <Button variant="contained" color="primary">
+                    Sign up
+                  </Button>
+                </Link>
+              </Stack>
+            )}
+          </Stack>
+        </AppBar>
+        <Drawer anchor="right" open={drawerOpen} onClose={handleDrawerClose}>
+          {drawerContent}
+        </Drawer>
+      </Container>
     </Box>
   );
 };

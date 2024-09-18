@@ -8,6 +8,7 @@ import {
   FormControl,
   Select,
   Stack,
+  Divider,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import banner from "../../assets/images/banner.png";
@@ -24,8 +25,7 @@ const Banner = () => {
         display: "flex",
         flexDirection: "column",
         alignItems: "end",
-        position: "absolute",
-        top: 0,
+        mt: "-130px",
       }}
     >
       {/* Banner Content */}
@@ -34,36 +34,40 @@ const Banner = () => {
           height: "100%",
           width: "100%",
           display: "flex",
-          direction: "row",
-          justifyContent: "space-evenly",
+          direction: "column",
+          justifyContent: "space-between",
           alignItems: "end",
           mb: {
-            lg: 10,
-            md: 8,
-            sm: 6,
-            xs: 4,
+            lg: 6,
+            md: 5,
+            sm: 4,
+            xs: 3,
+          },
+          p: {
+            lg: 6,
+            md: 4,
+            sm: 3,
+            xs: 2,
           },
         }}
       >
         <Stack
+          width={"100%"}
           direction={{ lg: "row", md: "row", sm: "column", xs: "column" }}
-          sx={{
-            justifyContent: "space-between",
-            alignItems: "center",
-            gap: {
-              lg: 10,
-              md: 5,
-              sm: 2,
-              xs: 2,
-            },
-          }}
+          justifyContent="space-between"
+          alignItems="center"
+          gap={3}
         >
           <Box width={"100%"}>
             <Typography
               variant="h4"
               color="white"
-              align="center"
-              sx={{ fontWeight: 700 }}
+              textAlign={{
+                lg: "start",
+                md: "start",
+                sm: "center",
+                xs: "center",
+              }}
             >
               Ready to Rock? Discover the <br />
               Hottest Events Here — Your <br />
@@ -106,14 +110,24 @@ const Banner = () => {
               />
             </Box>
 
-            <FormControl variant="outlined">
+            <Divider
+              orientation="vertical"
+              variant="middle"
+              flexItem
+              sx={{ border: "2px solid lightgray" }}
+            />
+
+            <FormControl variant="standard">
               <Select defaultValue="" displayEmpty>
-                <MenuItem value="">
-                  <em>Categories</em>
-                </MenuItem>
-                <MenuItem value={1}>Music</MenuItem>
-                <MenuItem value={2}>Sports</MenuItem>
-                <MenuItem value={3}>Tech</MenuItem>
+                <MenuItem value="">Categories</MenuItem>
+                <MenuItem value={1}>All</MenuItem>
+                <MenuItem value={2}>Comedy</MenuItem>
+                <MenuItem value={3}>Religious</MenuItem>
+                <MenuItem value={4}>Tech</MenuItem>
+                <MenuItem value={5}>Health</MenuItem>
+                <MenuItem value={6}>Fitness</MenuItem>
+                <MenuItem value={7}>Sports</MenuItem>
+                <MenuItem value={8}>Education</MenuItem>
               </Select>
             </FormControl>
 
