@@ -2,6 +2,7 @@ import { Box, Container, Stack, Typography } from "@mui/material";
 import NorthEastIcon from "@mui/icons-material/NorthEast";
 import EventCard from "../../components/ui/EventCard";
 import { Event } from "../../type";
+import { Link } from "react-router-dom";
 
 interface TrendingEventsProps {
   events: Event[] | undefined;
@@ -26,8 +27,18 @@ const TrendingEvents: React.FC<TrendingEventsProps> = ({ events, loading }) => {
           <Typography variant="h4" fontWeight={500} color="black">
             Trending Events
           </Typography>
-          <Box display="flex" alignItems="center" gap="8px">
-            <Typography color="secondary.main" fontWeight={500}>
+          <Box
+            display="flex"
+            alignItems="center"
+            gap="8px"
+            component={Link}
+            to={"/events"}
+          >
+            <Typography
+              color="secondary.main"
+              fontWeight={500}
+              sx={{ textDecoration: "none" }}
+            >
               View all trending events
             </Typography>
             <NorthEastIcon
@@ -41,6 +52,7 @@ const TrendingEvents: React.FC<TrendingEventsProps> = ({ events, loading }) => {
           sx={{
             display: "flex",
             justifyContent: "center",
+            alignItems: "stretch",
             flexWrap: "wrap",
             gap: {
               lg: 3,

@@ -3,17 +3,20 @@ import { Box } from "@mui/material";
 import Banner from "./Banner";
 import TrendingEvents from "./TrendingEvents";
 import { fetchAllEvents, searchEventsByCategory } from "../../services/api";
+import EventCategoriesSection from "./EventCategoriesSection";
 
 const HomePage: React.FC = () => {
   const [events, setEvents] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [category, setCategory] = useState("");
   const [loading, setLoading] = useState(false);
+  const [pageNumber] = useState(1);
+  const [limit] = useState(6);
 
   // Fetch all events initially
   useEffect(() => {
     setLoading(true);
-    fetchAllEvents(1)
+    fetchAllEvents(pageNumber, limit)
       .then((response) => {
         console.log(response);
         setEvents(response?.data?.data?.allEvents);
@@ -24,7 +27,6 @@ const HomePage: React.FC = () => {
       .finally(() => setLoading(false));
   }, []);
 
-  console.log(events);
   // Search for events by category
   const handleSearch = () => {
     setLoading(true);
@@ -48,6 +50,7 @@ const HomePage: React.FC = () => {
         handleSearch={handleSearch}
       />
       <TrendingEvents events={events} loading={loading} />
+      <EventCategoriesSection />
     </Box>
   );
 };

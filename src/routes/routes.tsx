@@ -5,6 +5,8 @@ import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
 import AboutPage from "../pages/About/AboutPage";
 import ContactPage from "../pages/Contact/ContactPage";
+import AllEventsPage from "../pages/Events/AllEventsPage";
+import EventDetailsPage from "../pages/Events/EventDetailsPage";
 
 const router = createBrowserRouter([
   {
@@ -14,6 +16,14 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <HomePage />,
+      },
+      {
+        path: "/events",
+        element: <AllEventsPage />,
+      },
+      {
+        path: "/events/:id",
+        element: <EventDetailsPage />,
       },
       {
         path: "/about",
