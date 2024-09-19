@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import { Box } from "@mui/material";
 import Banner from "./Banner";
@@ -46,10 +47,16 @@ const HomePage: React.FC = () => {
         event?.title?.toLowerCase().includes(searchTerm.toLowerCase())
       );
       setEvents(filteredEvents);
+      setSearchTerm("");
+      setCategory("");
     } else if (category) {
       fetchByCategory();
+      setSearchTerm("");
+      setCategory("");
     } else {
       setEvents(allFetchedEvents);
+      setSearchTerm("");
+      setCategory("");
     }
   };
 
