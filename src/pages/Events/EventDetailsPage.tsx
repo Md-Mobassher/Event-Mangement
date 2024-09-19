@@ -122,6 +122,18 @@ const EventDetailsPage: React.FC = () => {
                   </Stack>
                 </Stack>
 
+                <Stack direction="row" spacing={1} alignItems="center" pt={2}>
+                  <Typography variant="h6" fontWeight={500}>
+                    Category :
+                  </Typography>
+                  <Typography
+                    variant="h6"
+                    fontWeight={400}
+                    color="primary.main"
+                  >
+                    {event?.category}
+                  </Typography>
+                </Stack>
                 {/* Event Description */}
                 <Typography variant="h6" fontWeight={500} mt={5}>
                   Event Description

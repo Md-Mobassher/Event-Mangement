@@ -18,7 +18,7 @@ const EventCard: React.FC<Partial<Event>> = ({
   const ftime = formatTime(time as string);
 
   return (
-    <Card sx={{ maxWidth: 480, borderRadius: 2, boxShadow: 3 }}>
+    <Card sx={{ maxWidth: 480, borderRadius: 2, boxShadow: 3, height: "100%" }}>
       <CardMedia component="img" height="200" image={imageUrl} alt={title} />
       <CardContent>
         <Typography gutterBottom variant="h6" component="div">
@@ -28,14 +28,14 @@ const EventCard: React.FC<Partial<Event>> = ({
           {fdate} <Box px={"1px"}>•</Box> {ftime}
         </Typography>
 
-        <Typography color="black" mt={3}>
-          {description?.slice(0, 120)}...
+        <Typography color="black" mt={"20px"}>
+          {description?.slice(0, 130)}...
         </Typography>
         <Box
           display="flex"
           alignItems="center"
           gap="8px"
-          mt={3}
+          mt={"20px"}
           component={Link}
           to={`/events/${id}`}
           sx={{ textDecoration: "none" }}

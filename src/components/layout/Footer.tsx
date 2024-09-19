@@ -16,7 +16,7 @@ const Footer = () => {
             display: "flex",
             flexDirection: { xs: "column", md: "row" },
             justifyContent: "space-between",
-            gap: { xs: 4, md: 0 },
+            gap: { xs: 4, md: 2 },
           }}
         >
           {/* Left section - Logo and description */}

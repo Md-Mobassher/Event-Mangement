@@ -33,16 +33,15 @@ const router = createBrowserRouter([
         path: "/contact",
         element: <ContactPage />,
       },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/signup",
+        element: <SignUp />,
+      },
     ],
-  },
-
-  {
-    path: "/login",
-    element: <Login />,
-  },
-  {
-    path: "/signup",
-    element: <SignUp />,
   },
 ]);
 

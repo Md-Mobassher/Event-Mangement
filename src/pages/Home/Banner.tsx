@@ -19,6 +19,7 @@ interface BannerProps {
   category: string;
   setCategory: (value: string) => void;
   handleSearch: () => void;
+  eventCategories: string[];
 }
 
 const Banner: React.FC<BannerProps> = ({
@@ -27,6 +28,7 @@ const Banner: React.FC<BannerProps> = ({
   category,
   setCategory,
   handleSearch,
+  eventCategories,
 }) => {
   return (
     <Box
@@ -126,7 +128,7 @@ const Banner: React.FC<BannerProps> = ({
               orientation="vertical"
               variant="middle"
               flexItem
-              sx={{ border: "2px solid lightgray" }}
+              sx={{ border: "1px solid lightgray" }}
             />
 
             <FormControl variant="standard">
@@ -137,17 +139,15 @@ const Banner: React.FC<BannerProps> = ({
                 onChange={(e) => setCategory(e.target.value)}
               >
                 <MenuItem value="">Categories</MenuItem>
-                <MenuItem value={1}>All</MenuItem>
-                <MenuItem value={2}>Comedy</MenuItem>
-                <MenuItem value={3}>Religious</MenuItem>
-                <MenuItem value={4}>Tech</MenuItem>
-                <MenuItem value={5}>Health</MenuItem>
-                <MenuItem value={6}>Fitness</MenuItem>
-                <MenuItem value={7}>Sports</MenuItem>
-                <MenuItem value={8}>Education</MenuItem>
+                <MenuItem value={""}>All</MenuItem>
+
+                {eventCategories.map((cat) => (
+                  <MenuItem key={cat} value={cat}>
+                    {cat.charAt(0).toUpperCase() + cat.slice(1)}
+                  </MenuItem>
+                ))}
               </Select>
             </FormControl>
-
             <Button variant="contained" color="primary" onClick={handleSearch}>
               Search
             </Button>

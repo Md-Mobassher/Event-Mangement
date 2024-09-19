@@ -13,9 +13,15 @@ interface TrendingEventsProps {
 const TrendingEvents: React.FC<TrendingEventsProps> = ({ events, loading }) => {
   if (loading) return <Loading />;
 
-  if (!events)
+  if (!events || events.length === 0)
     return (
-      <Typography variant="h6" fontWeight={500}>
+      <Typography
+        variant="h6"
+        fontWeight={500}
+        textAlign="center"
+        mt={10}
+        color="red"
+      >
         Events Not Found
       </Typography>
     );
