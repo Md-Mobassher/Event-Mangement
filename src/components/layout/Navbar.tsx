@@ -25,7 +25,7 @@ export type TNavItemsData = {
 export const navItemsData = [
   {
     title: "Discover",
-    url: "/",
+    url: "/events",
   },
   {
     title: "About Us",
@@ -80,7 +80,7 @@ const Navbar = () => {
         ))}
         <Typography
           component={Link}
-          to={"/login"}
+          to={"/"}
           sx={{
             fontWeight: 500,
             color: "primary.main",
@@ -90,7 +90,7 @@ const Navbar = () => {
         >
           Log in
         </Typography>
-        <Link to={"/signup"}>
+        <Link to={"/"}>
           <Button variant="contained" color="primary">
             Sign up
           </Button>
@@ -170,7 +170,7 @@ const Navbar = () => {
               >
                 <Typography
                   component={Link}
-                  to={"/login"}
+                  to={"/"}
                   sx={{
                     fontWeight: 500,
                     color: "primary.main",
@@ -180,7 +180,7 @@ const Navbar = () => {
                 >
                   Log in
                 </Typography>
-                <Link to={"/signup"}>
+                <Link to={"/"}>
                   <Button variant="contained" color="primary">
                     Sign up
                   </Button>

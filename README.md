@@ -1,50 +1,93 @@
-# React + TypeScript + Vite
+# Event Management
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern event discovery web application built using Vite, Material UI (MUI), and TypeScript. The project is designed to provide users with a beautiful and intuitive interface for finding and exploring events.
 
-Currently, two official plugins are available:
+## Table of Contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Live Link](#live-link)
+- [Project Description](#project-description)
+- [Technologies Used](#technologies-used)
+- [Installation](#installation)
+- [Running the Application](#running-the-application)
+- [Features](#features)
+- [Contributing](#contributing)
+- [License](#license)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Live Link
 
-- Configure the top-level `parserOptions` property like this:
+- **Live Link** - [Click Here](https://event-management-inky.vercel.app)
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Project Description
+
+The **Rendezvous Event Website** is a frontend web application that allows users to discover and search for events. The design is fully responsive and built with Material UI to provide a polished, professional look. It includes features such as an events search bar, categories, and user authentication for logging in or signing up.
+
+## Technologies Used
+
+- **Vite** - Blazing fast frontend build tool
+- **Material UI (MUI)** - Modern UI framework for React
+- **TypeScript** - Strictly typed programming language for better error detection
+- **Yarn** - Fast and reliable dependency management
+
+## Installation
+
+To run this project locally, follow these steps:
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/Md-Mobassher/Event-Mangement.git
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### 2. Navigate to the project directory
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```bash
+cd Event-Mangement
 ```
+
+### 3. Install dependencies using Yarn
+
+```bash
+yarn install
+```
+
+### 4. Install Material UI and required dependencies
+
+```bash
+yarn add @mui/material @emotion/react @emotion/styled
+```
+
+## Running the Application
+
+To run the project in development mode:
+
+```bash
+yarn dev
+```
+
+Then open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+## Features
+
+- **Event Search:** Users can search for events based on keywords.
+- **Category Filter:** Users can filter events by categories.
+- **Responsive Design:** The UI is responsive and looks great on all devices.
+
+## Contributing
+
+If you'd like to contribute, please follow these steps:
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License.
+
+### More Projects and Information
+
+👉 Explore additional projects and find out more about my work on my portfolio website: **[Md Mobassher Hossain](https://mobassher.vercel.app)**
