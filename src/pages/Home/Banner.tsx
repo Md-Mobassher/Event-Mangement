@@ -92,15 +92,15 @@ const Banner: React.FC<BannerProps> = ({
             sx={{
               backgroundColor: "white",
               py: 2,
-              px: 3,
+              px: 2,
               justifyContent: "space-between",
               alignItems: "center",
               borderRadius: 3,
               gap: {
-                lg: 4,
-                md: 3,
+                lg: 2,
+                md: 2,
                 sm: 2,
-                xs: 1,
+                xs: "4px",
               },
               width: "100%",
               height: "100px",
@@ -131,23 +131,26 @@ const Banner: React.FC<BannerProps> = ({
               sx={{ border: "1px solid lightgray" }}
             />
 
-            <FormControl variant="standard">
-              <Select
-                defaultValue=""
-                displayEmpty
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-              >
-                <MenuItem value="">Categories</MenuItem>
-                <MenuItem value={""}>All</MenuItem>
+            <Box width={150} pl={1}>
+              <FormControl variant="standard">
+                <Select
+                  defaultValue=""
+                  displayEmpty
+                  value={category}
+                  onChange={(e) => setCategory(e.target.value)}
+                >
+                  <MenuItem value="">Categories</MenuItem>
+                  <MenuItem value={""}>All</MenuItem>
 
-                {eventCategories.map((cat) => (
-                  <MenuItem key={cat} value={cat}>
-                    {cat.charAt(0).toUpperCase() + cat.slice(1)}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
+                  {eventCategories.map((cat) => (
+                    <MenuItem key={cat} value={cat}>
+                      {cat.charAt(0).toUpperCase() + cat.slice(1)}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </Box>
+
             <Button variant="contained" color="primary" onClick={handleSearch}>
               Search
             </Button>

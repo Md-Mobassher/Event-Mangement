@@ -18,7 +18,15 @@ const EventCard: React.FC<Partial<Event>> = ({
   const ftime = formatTime(time as string);
 
   return (
-    <Card sx={{ maxWidth: 480, borderRadius: 2, boxShadow: 3, height: "100%" }}>
+    <Card
+      sx={{
+        maxWidth: 480,
+        borderRadius: 2,
+        boxShadow: 3,
+        height: "100%",
+        mx: "auto",
+      }}
+    >
       <CardMedia component="img" height="200" image={imageUrl} alt={title} />
       <CardContent>
         <Typography gutterBottom variant="h6" component="div">

@@ -11,7 +11,14 @@ const EventCategoryCard: React.FC<EventCategoryCardProps> = ({
   title,
 }) => {
   return (
-    <Card sx={{ overflow: "hidden", height: "240px", maxWidth: "421px" }}>
+    <Card
+      sx={{
+        overflow: "hidden",
+        height: "240px",
+        width: "100%",
+        mx: "auto",
+      }}
+    >
       <CardActionArea
         sx={{
           backgroundImage: `url(${imageUrl})`,

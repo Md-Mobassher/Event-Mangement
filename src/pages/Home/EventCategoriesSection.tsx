@@ -38,14 +38,38 @@ const EventCategoriesSection: React.FC = () => {
         >
           {/* Left Side: Title and Button */}
           <Grid item xs={12} md={5}>
-            <Typography variant="h4" fontWeight={600} gutterBottom mb={4}>
+            <Typography
+              variant="h4"
+              fontWeight={600}
+              gutterBottom
+              mb={4}
+              textAlign={{
+                lg: "start",
+                md: "start",
+                sm: "start",
+                xs: "center",
+              }}
+            >
               Discover a World of Events Tailored Just for You.
             </Typography>
-            <Link to={"/events"}>
-              <Button variant="contained" color="primary">
-                View all events
-              </Button>
-            </Link>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: {
+                  lg: "start",
+                  md: "start",
+                  sm: "start",
+                  xs: "center",
+                },
+              }}
+            >
+              <Link to={"/events"}>
+                <Button variant="contained" color="primary">
+                  View all events
+                </Button>
+              </Link>
+            </Box>
           </Grid>
 
           {/* Right Side: Event Cards */}

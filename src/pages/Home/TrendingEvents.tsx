@@ -39,14 +39,17 @@ const TrendingEvents: React.FC<TrendingEventsProps> = ({ events, loading }) => {
           direction="row"
           justifyContent="space-between"
           alignItems="center"
+          gap={2}
         >
           <Typography variant="h4" fontWeight={500} color="black">
             Trending Events
           </Typography>
           <Box
             display="flex"
+            flexDirection="row"
             alignItems="center"
-            gap="8px"
+            justifyContent="end"
+            gap={{ lg: "8px", md: "6px", sm: "5px", xs: "2px" }}
             component={Link}
             to={"/events"}
             sx={{ textDecoration: "none" }}
@@ -68,6 +71,12 @@ const TrendingEvents: React.FC<TrendingEventsProps> = ({ events, loading }) => {
         <Box
           sx={{
             display: "flex",
+            direction: {
+              lg: "row",
+              md: "row",
+              sm: "row",
+              xs: "column",
+            },
             justifyContent: "center",
             alignItems: "stretch",
             flexWrap: "wrap",
