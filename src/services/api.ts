@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE_URL = "https://rendezvous-events.onrender.com/events";
+const API_BASE_URL = `${process.env.BACKEND_URL}`;
 
 // Fetch all events
 export const fetchAllEvents = (page: number, limit: number) => {
